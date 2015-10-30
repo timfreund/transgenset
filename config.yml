@@ -18,9 +18,8 @@ data:
       - invalid payment
       - ''
 output:
-  producers: 2
+  transmitters: 2
   mean_wait: 2
-  class: blah
+  class: transgenset.output.FileTransmitter
   parameters:
-    k1: v1
-    k2: v2
+    
