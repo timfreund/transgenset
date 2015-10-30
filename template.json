@@ -1,0 +1,7 @@
+{
+    'source': '{{ random.sample(sources, 1)[0] }}',
+    'amount': '{{ "%02.2f" % random.gauss(average_amount, 5) }}',
+    'action': '{{ random.sample(actions, 1)[0] }}',
+    'error': '{{ random.sample(errors, 1)[0] }}',
+    'timestamp': '{{ datetime.datetime.now() }}'
+}

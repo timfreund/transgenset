@@ -1,0 +1,26 @@
+imports:
+  - datetime
+  - random
+data:
+  - sources:
+      - i1:m1:s1
+      - i2:m2:s1
+      - i3:m2:s2
+      - i4:m1:s1
+  - average_amount: 10
+  - actions:
+      - auth
+      - capture
+      - refund
+  - errors:
+      - database failure
+      - processor failure
+      - invalid payment
+      - ''
+output:
+  producers: 2
+  mean_wait: 2
+  class: blah
+  parameters:
+    k1: v1
+    k2: v2
