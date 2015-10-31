@@ -4,6 +4,9 @@ import sys
 import threading
 import time
 
+from carrot.connection import BrokerConnection
+from carrot.messaging import Publisher
+
 class Multiplexer(object):
     def __init__(self, producer, transmitters, mean_wait):
         self.producer = producer
@@ -44,3 +47,23 @@ class FileTransmitter(Transmitter):
 
     def transmit(self, message):
         self.output_file.write("%s\n" % message)
+
+class AMQPTransmitter(Transmitter):
+    def __init__(self, hostname='localhost', port=5672,
+                 userid=None, password=None, virtual_host=None,
+                 exchange=None):
+        self.hostname = hostname
+        self.port = port
+        self.userid = userid
+        self.password = password
+        self.virtual_host = None
+        self.exchange = exchange
+
+        self.connection = BrokerConnection(hostname=self.hostname, port=self.port,
+                                           userid=self.userid, password=self.password,
+                                           virtual_host=self.virtual_host)
+        self.publisher = Publisher(connection=self.connection,
+                                   exchange=exchange)
+
+    def transmit(self, message):
+        self.publisher.send(message)

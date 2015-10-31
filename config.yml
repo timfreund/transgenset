@@ -20,6 +20,14 @@ data:
 output:
   transmitters: 2
   mean_wait: 2
-  class: transgenset.output.FileTransmitter
+  class: transgenset.output.AMQPTransmitter
   parameters:
+    hostname: localhost
+    port: 5672
+    userid: guest
+    password: guest
+    virtual_host: ''
+    exchange: transactions
+#   class: transgenset.output.FileTransmitter
+#   parameters:
     
