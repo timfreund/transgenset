@@ -1,0 +1,5 @@
+rabbitmq:
+  image: library/rabbitmq
+  ports:
+   - "5672:5672"
+   - "15674:15674"
