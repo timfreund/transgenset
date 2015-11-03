@@ -15,6 +15,3 @@ if __name__ == '__main__':
     consumer.register_callback(print_message)
     consumer.wait()
 
-
-
-the quick brown fox jumped over the lazy dogs. fvxvfx
